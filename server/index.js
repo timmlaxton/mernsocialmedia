@@ -12,7 +12,7 @@ import { fileURLToPath } from "url";
 /* Middleware Config */
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirnanme = path.dirname(__filename);
+const __dirname = path.dirname(__filename);
 dotenv.config();
 const app = express();
 app.use(express.json());
@@ -35,3 +35,16 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage });
+
+/* BE Setup */
+
+const PORT = process.env.PORT || 6001;
+mongoose
+  .connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+  })
+  .catch((error) => console.log(`${error} did not connect`));
