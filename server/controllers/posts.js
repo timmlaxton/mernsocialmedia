@@ -2,7 +2,7 @@ import Post from "../models/Post.js";
 
 export const createPost = async (req, res) => {
   try {
-    const { userId, description, picturepath } = req.body;
+    const { userId, description, picturePath } = req.body;
     const user = await User.findById(userId);
     const newPost = new Post({
       userId,
@@ -43,7 +43,7 @@ export const getUserPosts = async (req, res) => {
   }
 };
 
-export const likepost = async (req, res) => {
+export const likePost = async (req, res) => {
   try {
     const { id } = req.params;
     const { userId } = req.body;
