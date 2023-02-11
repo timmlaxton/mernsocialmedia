@@ -8,7 +8,7 @@ import {
   MenuItem,
   FormControl,
   useTheme,
-  useMedia,
+  useMediaQuery,
 } from "@mui/material";
 import {
   Search,
@@ -30,7 +30,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
-  const isNonMobileScreens = useMedia("(min-width: 1000px)");
+  const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
 
   const theme = useTheme();
   const neutralLight = theme.palette.neutral.light;
@@ -39,14 +39,14 @@ const Navbar = () => {
   const primaryLight = theme.palette.primary.light;
   const alt = theme.palette.background.alt;
 
-  const fullName = `${user.firstName} ${user.lastName}`;
+  // const fullName = `${user.firstName} ${user.lastName}`;
 
   return (
     <FlexBetween padding="1rem 6%" backgroundColor={alt}>
-      <FlexBetween>
+      <FlexBetween gap="1.75rem">
         <Typography
           fontWeight="bold"
-          fontSize="clamp(1rem, 2rem, 2.25rem)"
+          fontSize="clamp(1rem, 2rem, 1.25rem)"
           color="primary"
           onClick={() => navigate("/home")}
           sx={{
@@ -62,10 +62,10 @@ const Navbar = () => {
           <FlexBetween
             backgroundColor={neutralLight}
             borderRadius="9px"
-            gap="3rem"
+            gap="1rem"
             padding="0.1rem 1.5rem"
           >
-            <InputBase placeolder="Search..." />
+            <InputBase placeholder="Search..." />
             <IconButton>
               <Search />
             </IconButton>
@@ -84,9 +84,8 @@ const Navbar = () => {
           <Message sx={{ fontSize: "25px" }} />
           <Notifications sx={{ fontSize: "25px" }} />
           <Help sx={{ fontSize: "25px" }} />
-          <FormControl variant="standard" value={fullName}>
+          <FormControl variant="standard">
             <Select
-              value={fullName}
               sx={{
                 backgroundColor: neutralLight,
                 width: "150px",
@@ -102,8 +101,8 @@ const Navbar = () => {
               }}
             >
               input={<InputBase />}
-              <MenuItem value={fullName}>
-                <Typography>{fullName}</Typography>
+              <MenuItem>
+                <Typography></Typography>
               </MenuItem>
               <MenuItem onClick={() => dispatch(setLogout())}>Log Out</MenuItem>
             </Select>
@@ -152,9 +151,8 @@ const Navbar = () => {
             <Message sx={{ fontSize: "25px" }} />
             <Notifications sx={{ fontSize: "25px" }} />
             <Help sx={{ fontSize: "25px" }} />
-            <FormControl variant="standard" value={fullName}>
+            <FormControl variant="standard">
               <Select
-                value={fullName}
                 sx={{
                   backgroundColor: neutralLight,
                   width: "150px",
@@ -170,8 +168,8 @@ const Navbar = () => {
                 }}
               >
                 input={<InputBase />}
-                <MenuItem value={fullName}>
-                  <Typography>{fullName}</Typography>
+                <MenuItem>
+                  <Typography></Typography>
                 </MenuItem>
                 <MenuItem onClick={() => dispatch(setLogout())}>
                   Log Out
