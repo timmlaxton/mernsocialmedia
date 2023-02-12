@@ -19,6 +19,7 @@ import {
   Help,
   Menu,
   Close,
+  Favorite,
 } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { setMode, setLogout } from "state";
@@ -57,6 +58,7 @@ const Navbar = () => {
           }}
         >
           BlackColdHeart
+          <Favorite />
         </Typography>
         {isNonMobileScreens && (
           <FlexBetween
